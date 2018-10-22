@@ -112,6 +112,13 @@ body {
         width: 100%;
     }
 }
+
+.map {
+        height: 100%;
+	width: 100%;
+      }
+
+
 </style>
 </head>
 <body>
@@ -132,13 +139,15 @@ body {
   <div class="side">
       <h2>Username</h2>
       <div class="fakeimg" style="height:200px;">Image</div>
-      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+      <p>Extra information</p>
       <h3>More Text</h3>
       <p>Lorem ipsum dolor sit ame.</p>
       <div class="fakeimg" style="height:60px;">Image</div><br>
       <div class="fakeimg" style="height:60px;">Image</div><br>
       <div class="fakeimg" style="height:60px;">Image</div>
   </div>
+
+
   <div class="main">
       <h3>Username</h2>
       <h5>Datetime: hh:mm:ss, DD/MM/YYYY</h5>
@@ -148,22 +157,47 @@ body {
 	eiusmod tempor incididunt ut labore et dolore magna 
 	aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
       <br>
+
+
       <h3>Username</h2>
       <h5>Datetime: hh:mm:ss, DD/MM/YYYY</h5>
-      <div class="fakeimg" style="height:200px;">Map</div>
+      <div id="map" style="height:200px;background:yellow"></div>
+      <script>
+      function myMap() {
+      	var mapOptions = {
+      		center: new google.maps.LatLng(9.858052, -83.914426),
+    		zoom: 17,
+    		mapTypeId: google.maps.MapTypeId.ROADMAP
+	}
+	var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+	var marker = new google.maps.Marker({
+    		position: {lat: 9.858052, lng: -83.914426},
+    		map: map,
+    		title: 'Denuncia'
+  	});
+      }
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?
+	key=AIzaSyAEjYtzLpqWtw4xDtk49b0dsoSxN6gDWdA&callback=myMap"></script>
+
+
       <p>Texto de la denuncia unt in culpa qui officia deserunt mollit anim id 
 	est laborum consectetur adipiscing elit, sed do 
 	eiusmod tempor incididunt ut labore et dolore magna 
 	aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
       <br>
+
+
       <h3>Username</h2>
       <h5>Datetime: hh:mm:ss, DD/MM/YYYY</h5>
-      <div class="fakeimg" style="height:200px;">Map</div>
       <p>Texto de la denuncia unt in culpa qui officia deserunt mollit anim id 
 	est laborum consectetur adipiscing elit, sed do 
 	eiusmod tempor incididunt ut labore et dolore magna 
 	aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
       <br>
+
+
+
       <h3>Username</h2>
       <h5>Datetime: hh:mm:ss, DD/MM/YYYY</h5>
       <div class="fakeimg" style="height:200px;">Map</div>
