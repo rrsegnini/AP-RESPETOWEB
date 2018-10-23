@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <meta charset="UTF-8">
     <title>Respeto WEB</title>
     <!--<link rel="stylesheet" href="css/bootstrap.css">-->
@@ -15,12 +16,15 @@
     <p></p>
 </div>
 
-<div class="navbar">
-    <a href="#">Main feed</a>
-    <a href="#">Heat map</a>
-    <a href="#">Settings</a>
-    <a href="#" class="right">Log out</a>
+<div id="nav">
+
 </div>
+
+    <script>
+	$(function(){
+	  $("#nav").load("Navbar.html");
+	});
+	</script>
 
 <div class="row">
     <div class="side">

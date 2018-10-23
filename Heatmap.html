@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <meta charset="UTF-8">
     <title>Respeto WEB</title>
     <!--<link rel="stylesheet" href="css/bootstrap.css">-->
@@ -15,16 +16,19 @@
     <p></p>
 </div>
 
-<div class="navbar">
-    <a href="#">Main feed</a>
-    <a href="#">Heat map</a>
-    <a href="#">Settings</a>
-    <a href="#" class="right">Log out</a>
+<div id="nav">
+
 </div>
+
+    <script>
+	$(function(){
+	  $("#nav").load("Navbar.html");
+	});
+	</script>
 
 <div class="row">
     <div class="side">
-        <h2>Username</h2>
+        <h2>Heatmap</h2>
         <div class="fakeimg" style="height:200px;">Image</div>
         <p>Extra information</p>
         <h3>More Text</h3>
@@ -36,14 +40,7 @@
 
 
     <div class="main">
-        <h3>Username</h3>
-            <h5>Datetime: hh:mm:ss, DD/MM/YYYY</h5>
-            <div class="fakeimg" style="height:200px;">Map</div>
-            <p>Texto de la denuncia unt in culpa qui officia deserunt mollit anim id
-                est laborum consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-            <br>
+        
 
 
             <h3>Username</h3>
@@ -54,32 +51,16 @@
 				</script>
       
               
-				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEjYtzLpqWtw4xDtk49b0dsoSxN6gDWdA&callback=heatMap"></script>
-                <p>Texto de la denuncia unt in culpa qui officia deserunt mollit anim id
+				<script src="https://maps.googleapis.com/maps/api/js?
+				key=AIzaSyAEjYtzLpqWtw4xDtk49b0dsoSxN6gDWdA
+				&callback=heatMap&libraries=visualization"></script>
+				
+                <p>Descripción del mapa unt in culpa qui officia deserunt mollit anim id
                     est laborum consectetur adipiscing elit, sed do
                     eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
                 <br>
 
-
-                <h3>Username</h3>
-                    <h5>Datetime: hh:mm:ss, DD/MM/YYYY</h5>
-                    <p>Texto de la denuncia unt in culpa qui officia deserunt mollit anim id
-                        est laborum consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                    <br>
-
-
-
-                    <h3>Username</h3>
-                        <h5>Datetime: hh:mm:ss, DD/MM/YYYY</h5>
-                        <div class="fakeimg" style="height:200px;">Map</div>
-                        <p>Texto de la denuncia unt in culpa qui officia deserunt mollit anim id
-                            est laborum consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna
-                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                        <br>
     </div>
 </div>
 
