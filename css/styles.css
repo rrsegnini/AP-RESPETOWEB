@@ -13,7 +13,7 @@ body {
     padding: 80px;
     text-align: center;
     background: #00ad4e;
-    background-image: url(../imgs/LogoClear.png);
+    /*background-image: url(../imgs/LogoClear.png);*/
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -111,11 +111,477 @@ body {
     width: 100%;
 }
 
+.topbar {
+    backface-visibility:hidden;
+    border-bottom:1px solid #e6ecf0;
+    border-bottom:1px solid rgba(0,0,0,0.05);
+    position:fixed;
+    top:0;
+    right:0;
+    left:0;
+    z-index:1000
+}
 .global-nav {
-
-    border-bottom: 1px solid rgba(0,0,0,0.25);
-    height: 46px;
-    position: relative;
-    width: 100%;
-
+    border-bottom:1px solid rgba(0,0,0,0.25);
+    height:46px;
+    position:relative;
+    width:100%
+}
+.global-nav-inner {
+    background:#fff;
+    height:46px
+}
+.container {
+    position:relative;
+    width:890px;
+    margin:0 auto
+}
+.Icon {
+    background:transparent;
+    display:inline-block;
+    font-style:normal;
+    vertical-align:baseline;
+    position:relative
+}
+.visuallyhidden {
+    border:0;
+    clip:rect(0 0 0 0);
+    height:1px;
+    margin:-1px;
+    overflow:hidden;
+    padding:0;
+    position:absolute;
+    width:1px
+}
+.pushstate-spinner {
+    display:none;
+    height:26px;
+    margin:11px 0 0 -26px;
+    vertical-align:top;
+    width:26px
+}
+.nav {
+    text-align:left
+}
+.nav li {
+    position:relative
+}
+.nav>li {
+    color:#66757f
+}
+.nav#global-actions>li .Icon {
+    float:left;
+    margin:11px 0 0 10px;
+    width:23px;
+    height:23px
+}
+.nav li a {
+    position:relative;
+    font-size:12px
+}
+.nav li a.EdgeButton--medium {
+    font-size:14px
+}
+.nav>li>a .text {
+    float:left;
+    margin-left:3px;
+    margin-top:17px;
+    padding:0
+}
+.nav>li>a .text:only-child {
+    margin-left:10px
+}
+.nav>li>a {
+    color:inherit;
+    display:block;
+    font-size:13px;
+    font-weight:bold;
+    height:46px;
+    line-height:1;
+    padding:0 14px 0 4px
+}
+.pull-right {
+    float:right;
+    text-align:left
+}
+.nav-extras {
+    -moz-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+    display:-moz-inline-box;
+    display:-ms-inline-flexbox;
+    display:inline-flex;
+    height:100%
+}
+.t1-form {
+    margin-bottom:0;
+    margin-top:5px
+}
+.t1-form p+p {
+    margin-top:9px
+}
+@media screen and (max-width:936px) {
+    .global-nav .t1-form.form-search {
+        width:139px
+    }
+    #global-nav-about,#global-nav-moments,.global-nav #global-actions li span.text {
+        position:absolute;
+        overflow:hidden;
+        width:1px;
+        height:1px;
+        padding:0;
+        border:0;
+        clip:rect(1px,1px,1px,1px)
+    }
+    .global-nav .container {
+        width:auto;
+        min-width:520px
+    }
+    #global-actions.nav .icon,#global-actions.nav .icon {
+        margin-right:0
+    }
+    .u-hideMediumViewport {
+        position:absolute!important;
+        overflow:hidden!important;
+        width:1px!important;
+        height:1px!important;
+        padding:0!important;
+        border:0!important;
+        clip:rect(1px,1px,1px,1px)!important
+    }
+}
+@media screen and (max-width:700px) {
+    .global-nav .t1-form.form-search {
+        width:89px
+    }
+}
+.EdgeButton,.EdgeButton:visited {
+    border-radius:100px;
+    box-shadow:none;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:bold;
+    line-height:20px;
+    padding:6px 16px;
+    position:relative;
+    text-align:center;
+    white-space:nowrap
+}
+.EdgeButton:active,.EdgeButton:focus,.EdgeButton:hover {
+    text-decoration:none
+}
+.EdgeButton--xsmall {
+    font-size:12px;
+    line-height:16px;
+    padding:2px 8px
+}
+.EdgeButton--small {
+    font-size:12px;
+    line-height:16px;
+    padding:4px 12px
+}
+.EdgeButton--medium {
+    font-size:14px;
+    line-height:20px;
+    padding:6px 16px
+}
+.EdgeButton--large {
+    font-size:18px;
+    line-height:24px;
+    padding:12px 20px
+}
+.EdgeButton--xlarge {
+    font-size:18px;
+    line-height:32px;
+    padding:16px 32px
+}
+.EdgeButton--primary {
+    background-color:#00ad4e;
+    border:1px solid #00ad4e;
+    color:#fff
+}
+.EdgeButton--primary:hover {
+    background-color:#00ad4e;
+    border-color:#00ad4e;
+    color:#fff
+}
+.EdgeButton--primary:focus {
+    border-color:#00ad4e;
+    box-shadow:0 0 0 2px #fff,0 0 0 4px #2ffe04;
+    color:#fff
+}
+.EdgeButton--primary:active {
+    background-color:#00ad4e;
+    border-color:#00ad4e;
+    box-shadow:0 0 0 2px #fff,0 0 0 4px #2ffe04;
+    color:#fff
+}
+.EdgeButton--primary.disabled,.EdgeButton--primary[disabled],.EdgeButton--primary[disabled]:hover,.EdgeButton--primary[aria-disabled=true] {
+    opacity:.3;
+    -ms-filter:"alpha(opacity=30)"
+}
+.EdgeButton--secondary {
+    background-color:#fff;
+    border:1px solid #00ad4e;
+    color:#00ad4e
+}
+.EdgeButton--secondary:hover {
+    background-color:#eaf5fd;
+    color:#00ad4e
+}
+.EdgeButton--secondary:focus {
+    box-shadow:0 0 0 2px #fff,0 0 0 4px #03b400;
+    color:#00ad4e;
+    outline:0
+}
+.EdgeButton--secondary:active {
+    background-color:#00ad4e;
+    border-color:#00ad4e;
+    box-shadow:0 0 0 2px #fff,0 0 0 4px #2ffe04;
+    color:#fff
+}
+.EdgeButton--secondary.disabled,.EdgeButton--secondary[disabled],.EdgeButton--secondary[disabled]:hover,.EdgeButton--secondary[aria-disabled=true] {
+    background-color:#fff;
+    opacity:.3;
+    -ms-filter:"alpha(opacity=30)"
+}
+.EdgeButton--tertiary {
+    background-color:#fff;
+    border:1px solid #66757f;
+    color:#66757f
+}
+.EdgeButton--tertiary:hover {
+    background-color:#f5f8fa;
+    color:#66757f
+}
+.EdgeButton--tertiary:focus {
+    box-shadow:0 0 0 2px #fff,0 0 0 4px #ccd6dd;
+    color:#66757f
+}
+.EdgeButton--tertiary:active {
+    background-color:#f5f8fa;
+    box-shadow:0 0 0 2px #fff,0 0 0 4px #66757f;
+    color:#66757f
+}
+.EdgeButton--tertiary.disabled,.EdgeButton--tertiary[disabled],.EdgeButton--tertiary[disabled]:hover,.EdgeButton--tertiary[aria-disabled=true] {
+    background-color:#f5f8fa;
+    border-color:#f5f8fa;
+    opacity:.3;
+    -ms-filter:"alpha(opacity=30)"
+}
+.EdgeButton--danger {
+    background-color:#e0245e;
+    border:1px solid #e0245e;
+    color:#fff
+}
+.EdgeButton--danger:hover {
+    background-color:#ac002b;
+    border-color:#ac002b;
+    color:#fff
+}
+.EdgeButton--danger:focus {
+    box-shadow:0 0 0 2px #fff,0 0 0 4px #f6809a;
+    color:#fff
+}
+.EdgeButton--danger:active {
+    background-color:#ac002b;
+    border-color:#ac002b;
+    box-shadow:0 0 0 2px #fff,0 0 0 4px #e0245e;
+    color:#fff
+}
+.EdgeButton--danger.disabled,.EdgeButton--danger[disabled],.EdgeButton--danger[disabled]:hover,.EdgeButton--danger[aria-disabled=true] {
+    background-color:#ffb8c2;
+    border-color:#ffb8c2;
+    opacity:.3;
+    -ms-filter:"alpha(opacity=30)"
+}
+.EdgeButton--transparent {
+    background-color:transparent;
+    border:1px solid #fff;
+    color:#fff
+}
+.EdgeButton--transparent:focus:before {
+    box-shadow:0 0 0 2px rgba(255,255,255,0.5)
+}
+.EdgeButton--transparent:active:before {
+    box-shadow:0 0 0 2px rgba(255,255,255,0.8)
+}
+.EdgeButton--transparent.disabled,.EdgeButton--transparent[disabled],.EdgeButton--transparent[disabled]:hover,.EdgeButton--transparent[aria-disabled=true] {
+    opacity:.3;
+    -ms-filter:"alpha(opacity=30)"
+}
+.EdgeButton--transparent:focus:before,.EdgeButton--transparent:active:before,.EdgeButton--transparentDark:focus:before,.EdgeButton--transparentDark:active:before {
+    background-color:transparent;
+    border-radius:inherit;
+    bottom:-2px;
+    content:"";
+    left:-2px;
+    pointer-events:none;
+    position:absolute;
+    right:-2px;
+    top:-2px;
+    transition:.2s
+}
+.EdgeButton--transparentDark {
+    background-color:rgba(0,0,0,0.8);
+    border:1px solid rgba(255,255,255,0.8);
+    color:#fff
+}
+.EdgeButton--transparentDark:hover {
+    background-color:rgba(0,0,0,0.5);
+    border-color:rgba(255,255,255,0.5);
+    color:#fff
+}
+.EdgeButton--transparentDark:focus {
+    box-shadow:none;
+    color:#fff
+}
+.EdgeButton--transparentDark:active {
+    background-color:rgba(0,0,0,0.5);
+    border-color:rgba(255,255,255,0.5);
+    box-shadow:none;
+    color:#fff
+}
+.EdgeButton--transparentDark:focus:before {
+    box-shadow:0 0 0 2px rgba(255,255,255,0.5)
+}
+.EdgeButton--transparentDark:active:before {
+    box-shadow:0 0 0 2px rgba(255,255,255,0.8)
+}
+.EdgeButton--transparentDark.disabled,.EdgeButton--transparentDark[disabled],.EdgeButton--transparentDark[disabled]:hover,.EdgeButton--transparentDark[aria-disabled=true] {
+    opacity:.3;
+    -ms-filter:"alpha(opacity=30)"
+}
+.EdgeButton--invertedPrimary {
+    background-color:#fff;
+    border:1px solid #fff;
+    color:#1da1f2!important
+}
+.EdgeButton--invertedPrimary:hover,.EdgeButton--invertedPrimary:active {
+    background-color:rgba(255,255,255,0.8);
+    border-color:transparent
+}
+.EdgeButton--invertedPrimary:focus {
+    box-shadow:0 0 0 2px #00ad4e,0 0 0 4px #2ffe04
+}
+.EdgeButton--invertedPrimary:active {
+    box-shadow:0 0 0 2px #00ad4e,0 0 0 4px #fff
+}
+.EdgeButton--invertedPrimary.disabled,.EdgeButton--invertedPrimary[disabled],.EdgeButton--invertedPrimary[disabled]:hover,.EdgeButton--invertedPrimary[aria-disabled=true] {
+    background-color:#eaf5fd;
+    border-color:#eaf5fd;
+    opacity:.3;
+    -ms-filter:"alpha(opacity=30)"
+}
+.EdgeButton--invertedSecondary {
+    background-color:#00ad4e;
+    border:1px solid #fff;
+    color:#fff!important
+}
+.EdgeButton--invertedSecondary:hover {
+    background-color: #2ffe04
+}
+.EdgeButton--invertedSecondary:focus {
+    box-shadow:0 0 0 2px #00ad4e,0 0 0 4px #2ffe04
+}
+.EdgeButton--invertedSecondary:active {
+    box-shadow:0 0 0 2px #00ad4e,0 0 0 4px #fff
+}
+.EdgeButton--invertedSecondary.disabled,.EdgeButton--invertedSecondary[disabled],.EdgeButton--invertedSecondary[disabled]:hover,.EdgeButton--invertedSecondary[aria-disabled=true] {
+    opacity:.3;
+    -ms-filter:"alpha(opacity=30)"
+}
+.EdgeButton--invertedDanger {
+    background-color:transparent;
+    border:1px solid #e0245e;
+    color:#e0245e
+}
+.EdgeButton--invertedDanger:hover {
+    background-color:#ffb8c2;
+    color:#e0245e
+}
+.EdgeButton--invertedDanger:focus {
+    box-shadow:0 0 0 2px #fff,0 0 0 4px #ffb8c2;
+    color:#e0245e;
+    outline:0
+}
+.EdgeButton--invertedDanger:active {
+    background-color:#ffb8c2;
+    box-shadow:0 0 0 2px #fff,0 0 0 4px #e0245e;
+    color:#e0245e
+}
+.EdgeButton--invertedDanger.disabled,.EdgeButton--invertedDanger[disabled],.EdgeButton--invertedDanger[disabled]:hover,.EdgeButton--invertedDanger[aria-disabled=true] {
+    opacity:.3;
+    -ms-filter:"alpha(opacity=30)"
+}
+.EdgeButton.EdgeButton--icon {
+    border-radius:50%;
+    line-height:1;
+    padding:0
+}
+.EdgeButton--icon.EdgeButton--small {
+    font-size:14px;
+    height:26px;
+    width:26px
+}
+.EdgeButton--icon,.EdgeButton--icon.EdgeButton--medium {
+    font-size:18px;
+    height:34px;
+    width:34px
+}
+.EdgeButton--icon.EdgeButton--large {
+    font-size:21px;
+    height:50px;
+    width:50px
+}
+.global-nav .search-input {
+    background-color:#f5f8fa;
+    border-radius:21px;
+    border:1px solid #e6ecf0;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    color:#14171a;
+    display:block;
+    font-size:12px;
+    height:32px;
+    line-height:16px;
+    padding:8px 32px 8px 12px;
+    transition:all .2s ease-in-out;
+    width:100%
+}
+.global-nav .search-input:focus,.global-nav .search-input.focus {
+    background-color:#fff;
+    border:2px solid rgba(2, 131, 10, 0.93);
+    box-shadow:none;
+    color:#14171a;
+    opacity:1;
+    -ms-filter:"alpha(opacity=100)"
+}
+.global-nav .pull-right .right-actions {
+    -moz-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+    display:-moz-inline-box;
+    display:-ms-inline-flexbox;
+    display:inline-flex;
+    height:100%;
+    margin-top:5px
+}
+.nav.right-actions>li+li {
+    margin-left:16px
+}
+.nav.right-actions>li>a {
+    height:100%;
+    opacity:.6;
+    -ms-filter:"alpha(opacity=60)";
+    padding-right:0;
+    transition:all .15s ease-in-out
+}
+.nav.right-actions>li>a:hover {
+    color:#1c94e0;
+    opacity:1;
+    -ms-filter:"alpha(opacity=100)"
+}
+.form-search {
+    position:relative
 }
