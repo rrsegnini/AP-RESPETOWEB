@@ -1,5 +1,3 @@
-
-
 function initializeDatabse(){
 	// Initialize Firebase
 	var config = {
@@ -32,3 +30,7 @@ function fetchReports(){
 	});
 	
 }
+
+
+
+
