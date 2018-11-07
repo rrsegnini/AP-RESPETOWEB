@@ -13,7 +13,11 @@ function initializeDatabse(){
 	firebase.initializeApp(config);
 }
 
-function getDenuncias(){
+/*
+fetchReports es la funcion que obtiene las Denuncias de la base de datos
+
+*/
+function fetchReports(){
 	var database = firebase.database();
 	
 
