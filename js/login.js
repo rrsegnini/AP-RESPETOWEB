@@ -1,3 +1,19 @@
+function signUp(){
+	// Get a database reference to our posts
+	var db = firebase.database();
+
+  var username = document.getElementById("usernameINPT").value;
+  var pass = document.getElementById("passINPT").value;
+	firebase.auth().signInWithEmailAndPassword(username, pass)
+	.then(function(firebaseUser) {
+        alert("Very nice :)");
+		   window.open("Home.html","_self")
+	}).catch(function(error) {
+		   alert("Error :(");
+	});
+
+}
+
 
 (function ($) {
     "use strict";
@@ -13,10 +29,10 @@
             else {
                 $(this).removeClass('has-val');
             }
-        })    
+        })
     })
-  
-  
+
+
     /*==================================================================
     [ Validate ]*/
     var input = $('.validate-input .input100');
@@ -42,6 +58,7 @@
     });
 
     function validate (input) {
+      //return true;
         if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
             if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
                 return false;
@@ -65,7 +82,7 @@
 
         $(thisAlert).removeClass('alert-validate');
     }
-    
+
     /*==================================================================
     [ Show pass ]*/
     var showPass = 0;
@@ -82,7 +99,7 @@
             $(this).find('i').removeClass('zmdi-eye-off');
             showPass = 0;
         }
-        
+
     });
 
 
