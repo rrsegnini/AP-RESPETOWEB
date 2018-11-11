@@ -9,7 +9,7 @@ function signUp(){
         alert("Very nice :)");
 		   window.open("Home.html","_self")
 	}).catch(function(error) {
-		   alert("Error :(");
+		   alert(error.message);
 	});
 
 }
