@@ -4,14 +4,23 @@ function signUp(){
 
   var username = document.getElementById("usernameINPT").value;
   var pass = document.getElementById("passINPT").value;
+  //alert(username + "\n" + pass);
 	firebase.auth().signInWithEmailAndPassword(username, pass)
 	.then(function(firebaseUser) {
-        alert("Very nice :)");
-		   window.open("Home.html","_self")
+            alert("Success");
+		   //window.open("Home.html","_self")
 	}).catch(function(error) {
 		   alert(error.message);
 	});
-
+    //$firebaseAuth().$getAuth();
+    /*firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            alert("Very nice :)");// User is signed in.
+        } else {
+            //alert("Error :(");// No user is signed in.
+        }
+        });
+    */
 }
 
 
@@ -58,7 +67,7 @@ function signUp(){
     });
 
     function validate (input) {
-      //return true;
+        return true;
         if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
             if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
                 return false;
