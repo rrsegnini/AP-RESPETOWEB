@@ -26,7 +26,6 @@ function fetchReports(x){
 	ref.on("child_added", function(snapshot, prevChildKey,x) {
 	var newPost = snapshot.val();
 		console.log("Author: " + newPost.alias);
-            console.log("Time: " + newPost.fechaHoraString);
 		console.log("Description: " + newPost.descripcion);
 	});
 

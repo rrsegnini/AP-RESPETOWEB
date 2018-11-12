@@ -1,4 +1,4 @@
-(function() {
+ function main() {
     //Variables
     var list = document.getElementById("feedList");
 
@@ -46,4 +46,4 @@
 
 
 
-}());
+}
