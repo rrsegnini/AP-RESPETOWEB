@@ -1,11 +1,9 @@
 function signUp(){
-	//location.href = "Home.html";
 	// Get a database reference to our posts
 	var db = firebase.database();
 
   var username = document.getElementById("usernameINPT").value;
   var pass = document.getElementById("passINPT").value;
-  //alert(username + "\n" + pass);
 
 	firebase.auth().signInWithEmailAndPassword(username, pass).then(async user => {
     // Sign in success
@@ -13,14 +11,7 @@ function signUp(){
 	}).catch(error => {
 		    alert(error.message);
 		});
-	/*firebase.auth().signInWithEmailAndPassword(username, pass)
-	.then(function(firebaseUser) {
-				location.href = "Home.html";
-        alert("Success");
-		   //window.open("Home.html","_self")
-	}).catch(function(error) {
-		   alert(error.message);
-	});*/
+
 
 
 }
