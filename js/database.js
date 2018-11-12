@@ -9,6 +9,13 @@ function initializeDatabase(){
 		messagingSenderId: "653371239100"
 	};
 	firebase.initializeApp(config);
+	/*firebase.auth().onAuthStateChanged(function(user) {
+			if (user) {
+					alert("Very nice :)");// User is signed in.
+			} else {
+					alert("No user signed in");// No user is signed in.
+			}
+		});*/
 }
 
 /*
