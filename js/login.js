@@ -1,4 +1,4 @@
-function signUp(){
+function signIn(){
 	// Get a database reference to our posts
 	var db = firebase.database();
 
