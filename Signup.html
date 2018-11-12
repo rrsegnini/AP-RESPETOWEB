@@ -52,25 +52,42 @@
 						<i class="zmdi zmdi-account-add"></i>
 					</span>
 
-					<div class="wrap-input100">
-						<input id="nameINPT" class="input100" type="text" name="email">
+					<div class="wrap-input100 validate-input" data-validate = "Required field">
+						<input id="nameINPT" autocomplete="off" class="input100" type="text" name="name">
 						<span class="focus-input100" data-placeholder="Full name"></span>
 					</div>
 
+					<div class="wrap-input100 validate-input" data-validate = "Required field">
+						<input id="usernameINPT" autocomplete="off" class="input100" type="text" name="name">
+						<span class="focus-input100" data-placeholder="Username"></span>
+					</div>
+
+
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-						<input id="usernameINPT" class="input100" type="text" name="email">
+						<input id="emailINPT" autocomplete="off" class="input100" type="email" name="email">
 						<span class="focus-input100" data-placeholder="Email"></span>
 					</div>
 
-					<div class="wrap-input100">
-						<input id="usernameINPT" class="input100" type="text" name="email">
+					<div class="wrap-input100 validate-input">
+						<input id="idINPT" autocomplete="off" class="input100" type="text" name="id">
 						<span class="focus-input100" data-placeholder="ID"></span>
 					</div>
 
-					<div class="wrap-input100">
-						<input id="usernameINPT" class="input100" type="text" name="email">
-						<span class="focus-input100" data-placeholder="Age"></span>
+					<div class="wrap-input100 validate-input">
+						<label>Gender:</label><br>
+					  <input id="genderINPT" type="radio" name="gender" value="male"> Male<br>
+					  <input id="genderINPT" type="radio" name="gender" value="female"> Female<br>
+					  <input id="genderINPT" type="radio" name="gender" value="other"> Other
+
+						<span class="focus-input100"></span>
 					</div>
+
+
+					<div class = "wrap-input100 validate-input">
+				   <input type="range" class="input100" name="ageInputName" id="ageInputId" value="18"
+					 min="1" max="100" oninput="ageOutputId.value = ageInputId.value"> Age:
+				   <output name="ageOutputName" id="ageOutputId">18</output>
+						</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
 						<span class="btn-show-pass">
@@ -83,7 +100,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button id="loginBTN"  type="button" onclick="signUp()" class="login100-form-btn">
+							<button id="signupBTN" onclick="signUp()" class="login100-form-btn">
 								Register
 							</button>
 						</div>
@@ -121,7 +138,7 @@
 <!--===============================================================================================-->
 	<script src="css/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="js/login.js"></script>
+	<script src="js/signup.js"></script>
 <!--===============================================================================================-->
 	<script src="js/database.js"></script>
 	<script src="js/denuncias.js"></script>
