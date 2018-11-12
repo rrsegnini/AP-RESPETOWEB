@@ -1,12 +1,7 @@
  function mainFeed() {
-    //Variables
-    var feedList = document.getElementById("feedList");
-
-
-
     //Functions
 
-    function fetchReports(list){
+    function fetchReports(){
         var database = firebase.database();
 
 
@@ -14,31 +9,12 @@
         var db = firebase.database();
         var ref = db.ref("denuncias");
 
-        ref.on("child_added", function(snapshot, prevChildKey, list) {
-            var newPost = snapshot.val();
-            var newReport = document.createElement("li"),
-                usernameH = document.createElement("h3"),
-                username = document.createTextNode(newPost.alias);
-
-            console.log("Author: " + newPost.alias);
-            console.log("Description: " + newPost.descripcion);
-
-
-            // adding
-            usernameH.appendChild(username);
-            newReport.appendChild(usernameH);
-            list.appendChild(newReport);
-            ne
-
+        ref.on("child_added", function(snapshot, prevChildKey) {
+            creatingHTMLelements(snapshot.val());
+            
         });
 
     }
-
-
-    //execute function
-    fetchReports(feedList);
-
-
     var addReports = function(){
 
 
@@ -46,7 +22,49 @@
     };
 
 
+    //execute function
+    fetchReports();
 
+
+
+}
+
+
+
+function creatingHTMLelements(snapshotVal) {
+    var feedList = document.getElementById("feedList");
+
+    //console.log(feedList);
+
+    var newPost =  snapshotVal;
+
+    //variables creation
+    var newReport = document.createElement("li"),
+        usernameH = document.createElement("h3"),
+        datetimeH = document.createElement("h5"),
+        infoParagraph = document.createElement("p"),
+        username = document.createTextNode(newPost.alias),
+        datetime = document.createTextNode(newPost.fechaHoraString),
+        reportInfo = document.createTextNode(newPost.descripcion);
+        
+
+
+    //console.log("Author: " + newPost.alias);
+    //console.log("Description: " + newPost.descripcion);
+
+    // adding text to elements
+    usernameH.appendChild(username);
+    datetimeH.appendChild(datetime);
+    infoParagraph.appendChild(reportInfo);
+
+    // adding HTML elements to the new report Item
+    newReport.appendChild(usernameH);
+    newReport.appendChild(datetimeH);
+    newReport.appendChild(infoParagraph);
+
+
+    // adding the new report Item to the HTML list items
+    feedList.appendChild(newReport);
 
 
 
