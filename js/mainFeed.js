@@ -1,6 +1,6 @@
- function main() {
+ function mainFeed() {
     //Variables
-    var list = document.getElementById("feedList");
+    var feedList = document.getElementById("feedList");
 
 
 
@@ -20,6 +20,9 @@
                 usernameH = document.createElement("h3"),
                 username = document.createTextNode(newPost.alias);
 
+            console.log("Author: " + newPost.alias);
+            console.log("Description: " + newPost.descripcion);
+
 
             // adding
             usernameH.appendChild(username);
@@ -32,7 +35,8 @@
     }
 
 
-
+    //execute function
+    fetchReports(feedList);
 
 
     var addReports = function(){
