@@ -22,7 +22,7 @@ function initializeDatabase(){
 fetchReports es la funcion que obtiene las Denuncias de la base de datos
 
 */
-function fetchReports(){
+function fetchReports(x){
 	var database = firebase.database();
 
 
@@ -30,9 +30,10 @@ function fetchReports(){
 	var db = firebase.database();
 	var ref = db.ref("denuncias");
 
-	ref.on("child_added", function(snapshot, prevChildKey) {
+	ref.on("child_added", function(snapshot, prevChildKey,x) {
 	var newPost = snapshot.val();
 		console.log("Author: " + newPost.alias);
+            console.log("Time: " + newPost.fechaHoraString);
 		console.log("Description: " + newPost.descripcion);
 	});
 
