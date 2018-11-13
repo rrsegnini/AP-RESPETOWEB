@@ -1,9 +1,9 @@
- /*
+//import firebase from 'firebase';
+
+/*
 Main Function used to create the MAIN FEED
 */
  function mainFeed() {
-
-    //execute functions
     loadUserData();
     fetchReports();
 
@@ -22,7 +22,7 @@ function fetchReports(){
     var ref = db.ref("denuncias").orderByChild("fechaHora");
 
     ref.on("child_added", function(snapshot, prevChildKey) {
-        creatingHTMLelements(snapshot.val());        
+        creatingHTMLelements(snapshot.val());
     });
 
     }
@@ -33,39 +33,44 @@ function fetchReports(){
 Function used to load the user Data into the HTML page
 */
 function loadUserData() {
+      firebase.auth().onAuthStateChanged(user=>{
+      if(user){
+          //alert("Usuario loggeado");
+          if (user) {
+            // User is signed in.
 
-    var user = firebase.auth().currentUser;
-    if (user) {
-      // User is signed in.
+              var name, email, photoUrl, uid, emailVerified;
 
-        var name, email, photoUrl, uid, emailVerified;
-
-        console.log("User's id" + user.uid);
-        console.log("User's name" + user.email);
-
-
-        var userId = firebase.auth().currentUser.uid;
+              console.log("User's id" + user.uid);
+              console.log("User's name" + user.email);
 
 
-        const dbRefObject = firebase.database().ref('usuarios').
-        orderByChild("id").equalTo(userId).once('value', 
-            function(snapshot) {
-                //set up user info in the HTML elements
-                settingUserHTMLelements(snapshot.val());
-
-            });
-
-        /*return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-            var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-            // ...
-        });*/      
-
-    } else {
-      // No user is signed in.
-      console.log("User not logged in");
-    }
+              var userId = firebase.auth().currentUser.uid;
 
 
+              const dbRefObject = firebase.database().ref('usuarios').
+              orderByChild("id").equalTo(userId).once('value',
+                  function(snapshot) {
+                      //set up user info in the HTML elements
+
+                      //ESTE METODO ESTABA DANDO ERROR TypeError: userData is null
+                      /////////////////////////////////////////////////////settingUserHTMLelements(snapshot.val());
+                      //Lo comente para que vea lo de la informacion del usuario en la consola
+                  });
+
+              return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+                  var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+                  // ...
+              });
+
+          } else {
+            // No user is signed in.
+            console.log("User not logged in");
+          }
+      } else{
+        alert("Usuario desloggeado");
+      }
+      });
 }
 
 
@@ -105,10 +110,10 @@ function creatingHTMLelements(snapshotVal) {
         username = document.createTextNode(newPost.alias),
         datetime = document.createTextNode(newPost.fechaHoraString),
         reportInfo = document.createTextNode(newPost.descripcion);
-        
 
 
-    
+
+
 
     // adding text to elements
     usernameH.appendChild(username);

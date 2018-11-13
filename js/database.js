@@ -1,4 +1,6 @@
+var defaultApp;
 function initializeDatabase(){
+
 	// Initialize Firebase
 	var config = {
 		apiKey: "AIzaSyC75FgsDa09hZYW7qqOjByuGyHTvo5J_Fc",
@@ -15,8 +17,8 @@ function initializeDatabase(){
 fetchReports es la funcion que obtiene las Denuncias de la base de datos
 
 */
-function fetchReports(x){
-	var database = firebase.database();
+/*function fetchReports(x){
+	//var database = firebase.database();
 
 
 	// Get a database reference to our posts
@@ -29,4 +31,9 @@ function fetchReports(x){
 		console.log("Description: " + newPost.descripcion);
 	});
 
-}
+}*/
+/*
+export default {
+  name: 'firebase',
+  initialize
+};*/
