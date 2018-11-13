@@ -10,17 +10,19 @@ function signUp(){
 	var age = document.getElementById("ageInputId").value;
   var pass = document.getElementById("passINPT").value;
 
+			//alert("Espere...");
 
-	var user = {alias:alias,  cedula:id,  edad:age,  email:email,
-					genero:gender,  id:id,  nombreCompleto:name};
-	firebase.database().ref("usuarios").push(user);
 
-	firebase.auth().createUserWithEmailAndPassword(alias, pass).then(async user => {
+	firebase.auth().createUserWithEmailAndPassword(email, pass).then(user => {
     // Sign in success
+		var user = {alias:alias,  cedula:id,  edad:age,  email:email,
+						genero:gender,  id:id,  nombreCompleto:name};
+		firebase.database().ref("usuarios").push(user);
     location.href = "Home.html";
 	}).catch(error => {
-		    alert(error.message);
+		    console.log(error.message);
 		});
+
 }
 
 
@@ -46,7 +48,7 @@ function signUp(){
     [ Validate ]*/
     var input = $('.validate-input .input100');
 
-    $('.validate-form').on('submit',function(){
+    $('#signupBTN').on('click',function(){
         var check = true;
 
         for(var i=0; i<input.length; i++) {
@@ -56,7 +58,7 @@ function signUp(){
             }
         }
 
-        return check;
+					return check;
     });
 
 
@@ -70,7 +72,7 @@ function signUp(){
         //return true;
         if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
             if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-                return false;
+								return false;
             }
         }
         else {
