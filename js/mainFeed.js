@@ -19,7 +19,7 @@ function fetchReports(){
 
     // Get a database reference to our posts
     var db = firebase.database();
-    var ref = db.ref("denuncias");
+    var ref = db.ref("denuncias").orderByChild("fechaHora");
 
     ref.on("child_added", function(snapshot, prevChildKey) {
         creatingHTMLelements(snapshot.val());        
@@ -59,6 +59,7 @@ function loadUserData() {
             var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
             // ...
         });*/      
+
     } else {
       // No user is signed in.
       console.log("User not logged in");
@@ -128,10 +129,6 @@ function creatingHTMLelements(snapshotVal) {
     feedList.appendChild(newReport);
 
 }
-
-
-
-
 
 //console.log("Author: " + newPost.alias);
 //console.log("Description: " + newPost.descripcion);
