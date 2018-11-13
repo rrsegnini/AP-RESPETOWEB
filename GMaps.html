@@ -97,7 +97,7 @@
     </style>
 </head>
 <body>
-<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+<input id="pac-input" class="controls" type="text" placeholder="Buscar ubicación">
 <div id="map"></div>
 
 <script>
@@ -124,7 +124,7 @@
                 };
 
                 infoWindow.setPosition(pos);
-                infoWindow.setContent('Location found.');
+                infoWindow.setContent('Ubicación actual');
                 infoWindow.open(map);
                 map.setCenter(pos);
             }, function() {
