@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="js/database.js"></script>
+	<script src="js/google_maps.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-messaging.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-functions.js"></script>
     <meta charset="UTF-8">
     <title>Respeto WEB</title>
     <!--<link rel="stylesheet" href="css/bootstrap.css">-->
@@ -21,9 +30,11 @@
 </div>
 
     <script>
+		initializeDatabase();
 	$(function(){
 	  $("#nav").load("Navbar.html");
 	});
+	fetchReportsHM();
 	</script>
 
 <div class="row">
@@ -40,19 +51,19 @@
 
 
     <div class="main">
-        
+
 
 
             <h3>Heatmap</h3>
                 <h5>Datetime: hh:mm:ss, DD/MM/YYYY</h5>
                 <div id="googleMap" style="width:100%;height:400px;"></div>
                 <script src="js/google_maps.js"></script>
-      
-              
-				<script src="https://maps.googleapis.com/maps/api/js?
-				key=AIzaSyAEjYtzLpqWtw4xDtk49b0dsoSxN6gDWdA
-				&callback=heatMap&libraries=visualization"></script>
-				
+
+
+						<script src="https://maps.googleapis.com/maps/api/js?
+						key=AIzaSyAEjYtzLpqWtw4xDtk49b0dsoSxN6gDWdA
+						&callback=heatMap&libraries=visualization"></script>
+
                 <p>Descripción del mapa unt in culpa qui officia deserunt mollit anim id
                     est laborum consectetur adipiscing elit, sed do
                     eiusmod tempor incididunt ut labore et dolore magna
@@ -62,10 +73,9 @@
     </div>
 </div>
 
-<div class="footer">
+<div onclik="heatMap()" class="footer">
     <h2>Created with <3 in Costa Rica</h2>
 </div>
-<!--<script src="js/bootstrap.bundle.js"></script>-->
 <!--<script src="js/bootstrap.js"></script>-->
 
 </body>

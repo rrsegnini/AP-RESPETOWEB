@@ -1,4 +1,3 @@
-var defaultApp;
 function initializeDatabase(){
 
 	// Initialize Firebase

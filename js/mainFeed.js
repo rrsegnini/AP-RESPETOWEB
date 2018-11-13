@@ -49,19 +49,11 @@ function loadUserData() {
 
 
               const dbRefObject = firebase.database().ref('usuarios').
-              orderByChild("id").equalTo(userId).once('value',
+              orderByChild("id").equalTo(userId).once('child_added',
                   function(snapshot) {
                       //set up user info in the HTML elements
-
-                      //ESTE METODO ESTABA DANDO ERROR TypeError: userData is null
-                      /////////////////////////////////////////////////////settingUserHTMLelements(snapshot.val());
-                      //Lo comente para que vea lo de la informacion del usuario en la consola
+                      settingUserHTMLelements(snapshot.val());
                   });
-
-              return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-                  var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-                  // ...
-              });
 
           } else {
             // No user is signed in.
@@ -80,6 +72,9 @@ Function used to set up HTML elements regarding the user that's logged in
 Recieves the snapshot from the query information of the user
 */
 function settingUserHTMLelements(snapshotVal) {
+
+  //console.log(snapshotVal);
+  //console.log(snapshotVal.alias)
     var userData = snapshotVal;
     document.getElementById("loggedUserUsername").innerHTML = userData.nombreCompleto;
     document.getElementById("loggedUserEmail").innerHTML= userData.email;
@@ -97,8 +92,9 @@ Recieves the snapshot from the query
 */
 function creatingHTMLelements(snapshotVal) {
     var feedList = document.getElementById("feedList");
-
-    //console.log(feedList);
+    var flag = false,
+        latlon = [];
+    //console.log(snapshotVal);
 
     var newPost =  snapshotVal;
 
@@ -106,13 +102,14 @@ function creatingHTMLelements(snapshotVal) {
     var newReport = document.createElement("li"),
         usernameH = document.createElement("h3"),
         datetimeH = document.createElement("h5"),
+        mapFrame = document.createElement("div"),
         infoParagraph = document.createElement("p"),
         username = document.createTextNode(newPost.alias),
         datetime = document.createTextNode(newPost.fechaHoraString),
         reportInfo = document.createTextNode(newPost.descripcion);
 
-
-
+    //creating map id in iframe
+    mapFrame.setAttribute("style", "width:100%;height:400px;");
 
 
     // adding text to elements
@@ -121,19 +118,86 @@ function creatingHTMLelements(snapshotVal) {
     infoParagraph.appendChild(reportInfo);
 
 
+    
+    
+
     //adding link
     usernameH.setAttribute("href","#");
 
     // adding HTML elements to the new report Item
     newReport.appendChild(usernameH);
     newReport.appendChild(datetimeH);
+
+    //verifies if the report has a location given.
+    if (snapshotVal.latitud !== undefined && snapshotVal.longitud !== undefined){
+          latlon.push(snapshotVal.latitud);
+          latlon.push(snapshotVal.longitud);
+          //lat and long found
+          flag = true;
+
+          //adds the map frame to the report
+          newReport.appendChild(mapFrame);
+        }
     newReport.appendChild(infoParagraph);
 
 
     // adding the new report Item to the HTML list items
     feedList.appendChild(newReport);
 
+    if (flag) {
+      //creating map
+      initMap(mapFrame,latlon);
+    }
+
+
 }
 
 //console.log("Author: " + newPost.alias);
 //console.log("Description: " + newPost.descripcion);
+
+
+
+// Initialize and add the map
+/*
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+
+
+
+function initMap(htmlMap,coords) {
+  var map = new google.maps.Map(htmlMap, {
+    zoom: 13,
+    center: {lat: coords[0], lng: coords[1]},
+    mapTypeId: 'satellite'
+  });
+  var latLng = new google.maps.LatLng(coords[1],coords[0]);
+  var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+
+}
+*/
+function initMap(htmlMap,coords) {
+        var myLatLng = {lat: coords[0], lng: coords[1]};
+
+        var map = new google.maps.Map(htmlMap, {
+          zoom: 15,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+
+

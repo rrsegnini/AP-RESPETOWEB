@@ -26,7 +26,7 @@ function myMap() {
     });
 }
 
-function heatMap(){
+function heatMap(hmdata){
 	var heatMapData = [
 	  {location: new google.maps.LatLng(37.782, -122.447), weight: 0.5},
 	  new google.maps.LatLng(37.782, -122.445),
@@ -47,18 +47,92 @@ function heatMap(){
 
 	map = new google.maps.Map(document.getElementById('googleMap'), {
 		zoom: 13,
-		center: {lat: 37.775, lng: -122.434},
+		center: {lat: 9.8583813, lng: -83.91371},
 		mapTypeId: 'satellite'
 	});
 
 	heatmap = new google.maps.visualization.HeatmapLayer({
-		data: getPoints(),
+		data: hmdata,
 		map: map
 	});
 }
+var pointsHM;
+
+function fetchReportsHM(){
+
+	// Get a database reference to our posts
+	var db = firebase.database();
+	var ref = db.ref("denuncias");
+
+     ref.once('value').then(function(snapshot){
+      // find all empty games
+      var points = [];
+      snapshot.forEach(denuncia => {
+        points.push(denuncia)
+
+      });
+
+      return points;
+    }).then(function(points){
+      var latlongpoints = [];
+      for (i = 0; i < points.length; i++) {
+        if (points[i].val().latitud !== undefined && points[i].val().longitud !== undefined){
+          latlongpoints.push(new google.maps.LatLng(points[i].val().latitud, points[i].val().longitud));
+        }
+      }
+          heatMap(latlongpoints);
+
+    }).catch(function(error){
+      console.log(error);
+    });
+
+
+
+  //console.log(points.alias);
+
+}
+
+function snapshotToArray(snapshot) {
+    var returnArr = [];
+
+    snapshot.forEach(function(childSnapshot) {
+        var item = childSnapshot.val();
+        item.key = childSnapshot.key;
+
+        returnArr.push(item);
+    });
+
+    return returnArr;
+};
+
+
+function getTwoLatestLocations(callback)
+{
+    var twoLocations;
+    myFirebaseRef.limitToLast(2).once('value', function (dataSnapshot) {
+        twoLocations = dataSnapshot.val();
+        callback(twoLocations);
+    }, function (errorObject) {
+        // code to handle read error
+        console.log("The read failed: " + errorObject.code);
+    });
+
+}
+
+
+function someCalcutationsWithTheTwoLastLocations()
+{
+    getTwoLatestLocations(function(twoLocations) {
+        // Do some calculations
+    });
+}
+
+
 
 function getPoints() {
-	return [
+  //lat: 9.8583813, lng: -83.91371
+  return [new google.maps.LatLng(9.8583813, -83.91371)];
+	/*return [
 	  new google.maps.LatLng(37.782551, -122.445368),
 	  new google.maps.LatLng(37.782745, -122.444586),
 	  new google.maps.LatLng(37.782842, -122.443688),
@@ -559,5 +633,5 @@ function getPoints() {
 	  new google.maps.LatLng(37.753837, -122.403172),
 	  new google.maps.LatLng(37.752986, -122.403112),
 	  new google.maps.LatLng(37.751266, -122.403355)
-	];
+	];*/
 }

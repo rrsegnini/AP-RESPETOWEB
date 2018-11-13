@@ -22,9 +22,7 @@ function signUp(){
 	    // New sign-in will be persisted with session persistence.
 	    return firebase.auth().createUserWithEmailAndPassword(email, pass).then(user => {
 		    // Sign in success
-				var user = {alias:alias,  cedula:id,  edad:age,  email:email,
-								genero:gender,  id:id,  nombreCompleto:name};
-				firebase.database().ref("usuarios").push(user);
+
 		    location.href = "Home.html";
 			}).catch(error => {
 				    console.log(error.message);
@@ -36,15 +34,17 @@ function signUp(){
 	    var errorMessage = error.message;
 	  });
 
-	/*firebase.auth().createUserWithEmailAndPassword(email, pass).then(user => {
-    // Sign in success
-		var user = {alias:alias,  cedula:id,  edad:age,  email:email,
-						genero:gender,  id:id,  nombreCompleto:name};
-		firebase.database().ref("usuarios").push(user);
-    location.href = "Home.html";
-	}).catch(error => {
-		    console.log(error.message);
-		});*/
+		firebase.auth().onAuthStateChanged((user) => {
+		  if (user) {
+				alert("Insertando nuevo usuario");
+		    console.log(user.uid);
+				var user = {alias:alias,  cedula:id,  edad:age,  email:email,
+								genero:gender,  id:user.uid,  nombreCompleto:name};
+				firebase.database().ref("usuarios").push(user);
+		  }
+		});
+
+
 
 }
 
