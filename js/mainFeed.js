@@ -92,7 +92,8 @@ Recieves the snapshot from the query
 */
 function creatingHTMLelements(snapshotVal) {
     var feedList = document.getElementById("feedList");
-
+    var flag = false,
+        latlon = [];
     //console.log(snapshotVal);
 
     var newPost =  snapshotVal;
@@ -101,14 +102,15 @@ function creatingHTMLelements(snapshotVal) {
     var newReport = document.createElement("li"),
         usernameH = document.createElement("h3"),
         datetimeH = document.createElement("h5"),
-        mapFrame = document.createElement("iframe"),
+        mapFrame = document.createElement("div"),
         infoParagraph = document.createElement("p"),
         username = document.createTextNode(newPost.alias),
         datetime = document.createTextNode(newPost.fechaHoraString),
         reportInfo = document.createTextNode(newPost.descripcion);
 
     //creating map id in iframe
-    mapFrame.setAttribute("id", "map");
+    mapFrame.setAttribute("style", "width:100%;height:400px;");
+
 
     // adding text to elements
     usernameH.appendChild(username);
@@ -116,9 +118,8 @@ function creatingHTMLelements(snapshotVal) {
     infoParagraph.appendChild(reportInfo);
 
 
-    //creating map
-    //initMap(mapFrame);
-
+    
+    
 
     //adding link
     usernameH.setAttribute("href","#");
@@ -126,12 +127,28 @@ function creatingHTMLelements(snapshotVal) {
     // adding HTML elements to the new report Item
     newReport.appendChild(usernameH);
     newReport.appendChild(datetimeH);
-    newReport.appendChild(mapFrame);
+
+    //verifies if the report has a location given.
+    if (snapshotVal.latitud !== undefined && snapshotVal.longitud !== undefined){
+          latlon.push(snapshotVal.latitud);
+          latlon.push(snapshotVal.longitud);
+          //lat and long found
+          flag = true;
+
+          //adds the map frame to the report
+          newReport.appendChild(mapFrame);
+        }
     newReport.appendChild(infoParagraph);
 
 
     // adding the new report Item to the HTML list items
     feedList.appendChild(newReport);
+
+    if (flag) {
+      //creating map
+      initMap(mapFrame,latlon);
+    }
+
 
 }
 
@@ -141,23 +158,46 @@ function creatingHTMLelements(snapshotVal) {
 
 
 // Initialize and add the map
-function initMap(docMap) {
+/*
+function initMap() {
   // The location of Uluru
   var uluru = {lat: -25.344, lng: 131.036};
   // The map, centered at Uluru
   var map = new google.maps.Map(
-      docMap, {zoom: 4, center: uluru});
+      document.getElementById('map'), {zoom: 4, center: uluru});
   // The marker, positioned at Uluru
   var marker = new google.maps.Marker({position: uluru, map: map});
 }
 
 
 
+function initMap(htmlMap,coords) {
+  var map = new google.maps.Map(htmlMap, {
+    zoom: 13,
+    center: {lat: coords[0], lng: coords[1]},
+    mapTypeId: 'satellite'
+  });
+  var latLng = new google.maps.LatLng(coords[1],coords[0]);
+  var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
 
+}
+*/
+function initMap(htmlMap,coords) {
+        var myLatLng = {lat: coords[0], lng: coords[1]};
 
+        var map = new google.maps.Map(htmlMap, {
+          zoom: 15,
+          center: myLatLng
+        });
 
-
-
-
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
 
 
