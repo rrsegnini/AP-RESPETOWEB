@@ -52,10 +52,7 @@ function loadUserData() {
               orderByChild("id").equalTo(userId).once('child_added',
                   function(snapshot) {
                       //set up user info in the HTML elements
-
-                      //ESTE METODO ESTABA DANDO ERROR TypeError: userData is null
                       settingUserHTMLelements(snapshot.val());
-                      //Lo comente para que vea lo de la informacion del usuario en la consola
                   });
 
           } else {
@@ -110,14 +107,17 @@ function creatingHTMLelements(snapshotVal) {
         datetime = document.createTextNode(newPost.fechaHoraString),
         reportInfo = document.createTextNode(newPost.descripcion);
 
-
-
-
+    //creating map id in iframe
+    mapFrame.setAttribute("id", "map");
 
     // adding text to elements
     usernameH.appendChild(username);
     datetimeH.appendChild(datetime);
     infoParagraph.appendChild(reportInfo);
+
+
+    //creating map
+    //initMap(mapFrame);
 
 
     //adding link
@@ -126,6 +126,7 @@ function creatingHTMLelements(snapshotVal) {
     // adding HTML elements to the new report Item
     newReport.appendChild(usernameH);
     newReport.appendChild(datetimeH);
+    newReport.appendChild(mapFrame);
     newReport.appendChild(infoParagraph);
 
 
@@ -136,3 +137,27 @@ function creatingHTMLelements(snapshotVal) {
 
 //console.log("Author: " + newPost.alias);
 //console.log("Description: " + newPost.descripcion);
+
+
+
+// Initialize and add the map
+function initMap(docMap) {
+  // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      docMap, {zoom: 4, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+
+
+
+
+
+
+
+
+
+
+
