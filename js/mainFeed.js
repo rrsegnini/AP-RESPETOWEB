@@ -49,19 +49,14 @@ function loadUserData() {
 
 
               const dbRefObject = firebase.database().ref('usuarios').
-              orderByChild("id").equalTo(userId).once('value',
+              orderByChild("id").equalTo(userId).once('child_added',
                   function(snapshot) {
                       //set up user info in the HTML elements
 
                       //ESTE METODO ESTABA DANDO ERROR TypeError: userData is null
-                      /////////////////////////////////////////////////////settingUserHTMLelements(snapshot.val());
+                      settingUserHTMLelements(snapshot.val());
                       //Lo comente para que vea lo de la informacion del usuario en la consola
                   });
-
-              return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-                  var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-                  // ...
-              });
 
           } else {
             // No user is signed in.
@@ -80,6 +75,9 @@ Function used to set up HTML elements regarding the user that's logged in
 Recieves the snapshot from the query information of the user
 */
 function settingUserHTMLelements(snapshotVal) {
+
+  //console.log(snapshotVal);
+  //console.log(snapshotVal.alias)
     var userData = snapshotVal;
     document.getElementById("loggedUserUsername").innerHTML = userData.nombreCompleto;
     document.getElementById("loggedUserEmail").innerHTML= userData.email;
@@ -98,7 +96,7 @@ Recieves the snapshot from the query
 function creatingHTMLelements(snapshotVal) {
     var feedList = document.getElementById("feedList");
 
-    //console.log(feedList);
+    //console.log(snapshotVal);
 
     var newPost =  snapshotVal;
 
@@ -106,6 +104,7 @@ function creatingHTMLelements(snapshotVal) {
     var newReport = document.createElement("li"),
         usernameH = document.createElement("h3"),
         datetimeH = document.createElement("h5"),
+        mapFrame = document.createElement("iframe"),
         infoParagraph = document.createElement("p"),
         username = document.createTextNode(newPost.alias),
         datetime = document.createTextNode(newPost.fechaHoraString),
