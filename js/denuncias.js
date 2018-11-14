@@ -150,8 +150,8 @@ function saveDenuncia() {
                     alias: mAlias
                 };
                 firebase.database().ref("denuncias").push(denuncia);
-                // console.log(mLocation)
-            });
+            Alert("Denuncia agregada correctamente")
+        });
     } else if(selection === "5"){
         var db = firebase.database();
         var ref = db.ref("search_locations").orderByKey().limitToLast(1);
@@ -167,6 +167,7 @@ function saveDenuncia() {
                 alias: mAlias
             };
             firebase.database().ref("denuncias").push(denuncia);
+            Alert("Denuncia agregada correctamente")
         });
     } else if(selection === "2"){
         denuncia = {
@@ -177,6 +178,7 @@ function saveDenuncia() {
             alias: mAlias
         };
         firebase.database().ref("denuncias").push(denuncia);
+        Alert("Denuncia agregada correctamente")
     } else if(selection === "3"){
         denuncia = {
             descripcion: mDescripcion,
@@ -186,6 +188,7 @@ function saveDenuncia() {
             alias: mAlias
         };
         firebase.database().ref("denuncias").push(denuncia);
+        Alert("Denuncia agregada correctamente")
     } else if(selection === "4"){
         denuncia = {
             descripcion: mDescripcion,
@@ -195,6 +198,7 @@ function saveDenuncia() {
             alias: mAlias
         };
         firebase.database().ref("denuncias").push(denuncia);
+        Alert("Denuncia agregada correctamente")
     }
 }
 
