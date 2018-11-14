@@ -79,7 +79,7 @@ function settingUserHTMLelements(snapshotVal) {
     document.getElementById("loggedUserUsername").innerHTML = userData.nombreCompleto;
     document.getElementById("loggedUserEmail").innerHTML= userData.email;
     //info contains pseudoname & gender
-    document.getElementById("loggedUserInfo").innerHTML= userData.alias + "\n" + userData.genero;
+    document.getElementById("loggedUserInfo").innerHTML= userData.alias;
 }
 
 
@@ -139,7 +139,7 @@ function creatingHTMLelements(snapshotVal) {
           newReport.appendChild(mapFrame);
     } else {
       newReport.appendChild(placeH);
-      
+
     }
     newReport.appendChild(infoParagraph);
 
