@@ -19,7 +19,7 @@ function fetchReports(){
 
     // Get a database reference to our posts
     var db = firebase.database();
-    var ref = db.ref("denuncias").orderByChild("fechaHora");
+    var ref = db.ref("denuncias").orderByKey();
 
     ref.on("child_added", function(snapshot, prevChildKey) {
         creatingHTMLelements(snapshot.val());
@@ -103,6 +103,7 @@ function creatingHTMLelements(snapshotVal) {
         usernameH = document.createElement("h3"),
         placeH = document.createElement("h5"),
         mapFrame = document.createElement("div"),
+        breakSpace = document.createElement("br"),
         infoParagraph = document.createElement("p"),
         username = document.createTextNode(newPost.alias),
         place = document.createTextNode(newPost.idLugar),
@@ -142,7 +143,7 @@ function creatingHTMLelements(snapshotVal) {
 
     }
     newReport.appendChild(infoParagraph);
-
+    newReport.appendChild(breakSpace);
 
     // adding the new report Item to the HTML list items
     feedList.appendChild(newReport);
