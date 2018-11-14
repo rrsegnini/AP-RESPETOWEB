@@ -101,11 +101,11 @@ function creatingHTMLelements(snapshotVal) {
     //variables creation
     var newReport = document.createElement("li"),
         usernameH = document.createElement("h3"),
-        datetimeH = document.createElement("h5"),
+        placeH = document.createElement("h5"),
         mapFrame = document.createElement("div"),
         infoParagraph = document.createElement("p"),
         username = document.createTextNode(newPost.alias),
-        datetime = document.createTextNode(newPost.fechaHoraString),
+        place = document.createTextNode(newPost.idLugar),
         reportInfo = document.createTextNode(newPost.descripcion);
 
     //creating map id in iframe
@@ -114,7 +114,7 @@ function creatingHTMLelements(snapshotVal) {
 
     // adding text to elements
     usernameH.appendChild(username);
-    datetimeH.appendChild(datetime);
+    placeH.appendChild(place);
     infoParagraph.appendChild(reportInfo);
 
 
@@ -126,7 +126,7 @@ function creatingHTMLelements(snapshotVal) {
 
     // adding HTML elements to the new report Item
     newReport.appendChild(usernameH);
-    newReport.appendChild(datetimeH);
+    
 
     //verifies if the report has a location given.
     if (snapshotVal.latitud !== undefined && snapshotVal.longitud !== undefined){
@@ -137,7 +137,10 @@ function creatingHTMLelements(snapshotVal) {
 
           //adds the map frame to the report
           newReport.appendChild(mapFrame);
-        }
+    } else {
+      newReport.appendChild(placeH);
+      
+    }
     newReport.appendChild(infoParagraph);
 
 
