@@ -4,6 +4,20 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Places Search Box</title>
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+    <script src="js/denuncias.js"></script>
+    <script src="js/database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-functions.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
     <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
@@ -97,6 +111,9 @@
     </style>
 </head>
 <body>
+<script>
+    initializeDatabase();
+</script>
 <input id="pac-input" class="controls" type="text" placeholder="Buscar ubicación">
 <div id="map"></div>
 
@@ -104,7 +121,8 @@
     initMap();
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7A4jidAW6JYE8eHFMM9auo1BnsEYAFCE&libraries=places&callback=initMap"
-        async defer></script>
+        async></script>
 <script src="js/denuncias.js"></script>
+<script src="js/database.js"></script>
 </body>
 </html>
